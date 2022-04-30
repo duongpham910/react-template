@@ -10,7 +10,7 @@ jobs:
       - run: npm install
       - save_cache:
           key: "npm-packages"
-          path:
+          paths:
             - /src/node_modules
       - run: npm run lint
 
@@ -22,6 +22,7 @@ jobs:
       - restore_cache:
           keys:
             - "npm-packages"
+      - run: npm install
       - run: npm run test
 
   analyze:
@@ -32,6 +33,7 @@ jobs:
       - restore_cache:
           keys:
             - "npm-packages"
+      - run: npm install
       - run: npm audit
 
 workflows:
